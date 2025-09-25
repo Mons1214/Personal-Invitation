@@ -16,13 +16,27 @@ function App() {
   const handleClickShowPassword = () => setShowPassword(!showPassword);
 
   return (
-    <Box className="App">
-      <Box className="Card" sx={{ }}> 
+    <Box className="App" sx={{
+      width:'100%',
+      height:'96vh',
+      border: '3px solid',
+      display: 'flex',
+      alignItems:'center',
+      justifyContent:'center',
+    }}>
+      <Box className="Card" sx={{ 
+        border: '3px solid',
+        display:'flex',
+        alignItems:'center',
+        justifyContent: 'center',
+        flexDirection: 'column',
+        backgroundColor:'violet',
+      }}> 
         <Box>
           <Typography variant='h4'>Bienvenido </Typography>
         </Box>
           /*Usuario*/
-        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <Box >
           <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
           <TextField label="Usuario" variant="standard" />
         </Box>
@@ -30,26 +44,26 @@ function App() {
         /*Contraseña*/
         <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center'}}> 
           <FormControl sx={{ m: 1, width: '25ch' }} variant="filled">
-          <InputLabel htmlFor="filled-adornment-password">Contraseña</InputLabel>
-          <FilledInput 
-          id="filled-adornment-password" 
-          type={showPassword ? 'text' : 'password'} 
-          endAdornment={
-          <InputAdornment position="end">
-            <IconButton onClick={handleClickShowPassword}> 
+            <InputLabel htmlFor="filled-adornment-password">Contraseña</InputLabel>
+            <FilledInput
+              id="filled-adornment-password"
+              type={showPassword ? 'text' : 'password'}
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton onClick={handleClickShowPassword}>
               {showPassword ? <VisibilityOff /> :<Visibility />}
-            </IconButton>
-          </InputAdornment>
-        } 
-      />
-        </FormControl>
+                  </IconButton>
+                </InputAdornment>
+              }
+            />
+          </FormControl>
         </Box>
 
         /*Botones*/
-        <Box>
-          <Button>Entrar</Button>
-          <Button>Registro</Button>
-        </Box>
+          <Box>
+            <Button>Entrar</Button>
+            <Button>Registro</Button>
+          </Box>
       </Box>
     </Box>
   );
