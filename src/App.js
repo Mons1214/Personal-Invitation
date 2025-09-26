@@ -17,33 +17,45 @@ function App() {
 
   return (
     <Box className="App" sx={{
-      width:'100%',
-      height:'96vh',
+      width: '100%',
+      height: '96vh',
       border: '3px solid',
       display: 'flex',
-      alignItems:'center',
-      justifyContent:'center',
+      alignItems: 'center',
+      justifyContent: 'center',
     }}>
-      <Box className="Card" sx={{ 
+      <Box className="Card" sx={{
         border: '3px solid',
-        display:'flex',
-        alignItems:'center',
+        display: 'flex',
+        alignItems: 'center',
         justifyContent: 'center',
         flexDirection: 'column',
-        backgroundColor:'violet',
-      }}> 
+        backgroundColor: 'violet',
+      }}>
         <Box>
-          <Typography variant='h4'>Bienvenido </Typography>
-        </Box>
-          /*Usuario*/
-        <Box >
-          <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-          <TextField label="Usuario" variant="standard" />
+          <Typography variant='h4'>𝔹𝕚𝕖𝕟𝕧𝕖𝕟𝕚𝕕𝕠</Typography>
         </Box>
 
-        /*Contraseña*/
-        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center'}}> 
-          <FormControl sx={{ m: 1, width: '25ch' }} variant="filled">
+
+        <Box >
+
+          <TextField
+            id="outlined-controlled"
+            label="Usuario"
+            value={''}
+            color='secondary'>
+
+          </TextField>
+        </Box>
+
+        <Box sx={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}>
+          <FormControl sx={{
+            m: 1, width: '25ch'
+          }} variant="filled">
             <InputLabel htmlFor="filled-adornment-password">Contraseña</InputLabel>
             <FilledInput
               id="filled-adornment-password"
@@ -51,7 +63,7 @@ function App() {
               endAdornment={
                 <InputAdornment position="end">
                   <IconButton onClick={handleClickShowPassword}>
-              {showPassword ? <VisibilityOff /> :<Visibility />}
+                    {showPassword ? <VisibilityOff /> : <Visibility />}
                   </IconButton>
                 </InputAdornment>
               }
@@ -59,11 +71,10 @@ function App() {
           </FormControl>
         </Box>
 
-        /*Botones*/
-          <Box>
-            <Button>Entrar</Button>
-            <Button>Registro</Button>
-          </Box>
+        <Box>
+          <Button>Entrar</Button>
+          <Button>Registro</Button>
+        </Box>
       </Box>
     </Box>
   );
