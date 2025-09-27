@@ -10,10 +10,39 @@ import FilledInput from '@mui/material/FilledInput';
 import { Visibility } from '@mui/icons-material';
 import { VisibilityOff } from '@mui/icons-material';
 
-function App() {
+export default function App() {
+
+  const [Usuario, setUsuario] = useState('');
+  const [password, setPassword] = useState('');
+  const [registros, setRegistros] = useState([
+    {usuario: 'mons', password: 'klakaia'},
+    {usuario: 'noel', password: 'zamora'},
+    {usuario: 'juan ', password: 'zamora'},
+    {usuario: 'ricardo', password: 'zamora'}
+  ]);
+
+
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleClickShowPassword = () => setShowPassword(!showPassword);
+  const handleClickShowPassword = () => setShowPassword(prev => !prev);
+  const handleMouseShowPassword = (event) => {
+    event.preventDefault();
+  };
+
+  const handleRegistro = () => {
+    if (!Usuario.trim() || !password.trim()) {
+      alert('Por favor completa el registro');
+      return;
+    }
+
+    setRegistros(prev => [...prev, { usuario: Usuario, password }]);
+    console.log("Usuarios registrados:", registros);
+
+    setUsuario("");
+    setPassword("");
+  };
+
+
 
   return (
     <Box className="App" sx={{
@@ -31,21 +60,26 @@ function App() {
         justifyContent: 'center',
         flexDirection: 'column',
         backgroundColor: 'violet',
+        padding: 3,
+        gap: 1,
       }}>
         <Box>
           <Typography variant='h4'>𝔹𝕚𝕖𝕟𝕧𝕖𝕟𝕚𝕕𝕠</Typography>
         </Box>
 
-
         <Box >
 
           <TextField
+           size="small"
             id="outlined-controlled"
             label="Usuario"
-            value={''}
-            color='secondary'>
-
-          </TextField>
+            value={Usuario}
+            onChange={(e) => setUsuario(e.target.value)}
+            color='secondary'
+            variant='outlined'
+            sx={{ mb: 1, width: '25ch' }}
+            inputProps={{ name: 'usuario' }}
+          />
         </Box>
 
         <Box sx={{
@@ -53,16 +87,19 @@ function App() {
           alignItems: 'center',
           justifyContent: 'center'
         }}>
-          <FormControl sx={{
-            m: 1, width: '25ch'
-          }} variant="filled">
+          <FormControl size="small" sx={{ m: 1, width: '25ch' }} variant="filled">
             <InputLabel htmlFor="filled-adornment-password">Contraseña</InputLabel>
             <FilledInput
               id="filled-adornment-password"
               type={showPassword ? 'text' : 'password'}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              inputProps={{ name: 'password' }}
               endAdornment={
                 <InputAdornment position="end">
-                  <IconButton onClick={handleClickShowPassword}>
+                  <IconButton onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseShowPassword}
+                    edge="end">
                     {showPassword ? <VisibilityOff /> : <Visibility />}
                   </IconButton>
                 </InputAdornment>
@@ -72,12 +109,19 @@ function App() {
         </Box>
 
         <Box>
-          <Button>Entrar</Button>
-          <Button>Registro</Button>
+          <Button type='button' onClick={handleRegistro}>Registro</Button>
+        </Box>
+
+        <Box sx={{ mt: 2 }}>
+          <Typography variant='h6'>Usuarios registrados:</Typography>
+          {registros.map((reg, index) => (
+            <Typography key={index}>{reg.usuario} - {reg.password}</Typography>
+          ))}
         </Box>
       </Box>
     </Box>
   );
 }
 
-export default App;
+
+
