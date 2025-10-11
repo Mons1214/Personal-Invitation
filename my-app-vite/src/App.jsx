@@ -37,7 +37,7 @@ export default function App() {
 
 
   useEffect(() => {
-    fetch("http://localhost:3001")
+    fetch("http://localhost:5173")
       .then(res => res.json())
       .then(data => console.log(data.mensaje))
       .catch(err => console.log("Error al conectar con el servidor:", err));
@@ -48,7 +48,7 @@ export default function App() {
   return (
     <Box className="App" sx={{
       width: '100%',
-      height: '96vh',
+      height: '82vh',
       border: '3px solid',
       display: 'flex',
       alignItems: 'center',
@@ -68,7 +68,7 @@ export default function App() {
           <Typography variant='h4'>𝔹𝕚𝕖𝕟𝕧𝕖𝕟𝕚𝕕𝕠</Typography>
         </Box>
 
-        <Box >
+        <Box sx={{ width: 200}}>
 
           <TextField
             size="small"
@@ -78,17 +78,18 @@ export default function App() {
             onChange={(e) => setUsuario(e.target.value)}
             color='secondary'
             variant='outlined'
-            sx={{ mb: 1, width: '25ch' }}
+            sx={{ mb: 1, width: '90%' }}
             inputProps={{ name: 'usuario' }}
           />
         </Box>
 
         <Box sx={{
+          width: '100%',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center'
         }}>
-          <FormControl size="small" sx={{ m: 1, width: '25ch' }} variant="filled">
+          <FormControl size="small" sx={{ m: 1, width: '67%' }} variant="filled">
             <InputLabel htmlFor="filled-adornment-password">Contraseña</InputLabel>
             <FilledInput
               id="filled-adornment-password"
