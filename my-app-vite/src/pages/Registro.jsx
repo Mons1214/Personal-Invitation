@@ -1,10 +1,45 @@
 import { Box, Button } from "@mui/material";
+import { useLocation, useNavigate } from "react-router-dom";
+
 
 export default function Registro() {
-  return (
-  <Box>
-  <Button>niña</Button>
-  <Button>niño</Button>
-  </Box>
-  )
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const registros = location.state?.registros || [];
+
+    return (
+        <Box sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "95vh",
+            width: "350px",
+            gap: "2",
+        }}>
+            <Box sx={{
+                border: "1px solid",
+                padding: "3",
+                borderRadius: "2",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                gap: "2",
+                backgroundColor: "pink",
+            }}>
+
+                <Button variant="contained ">niña</Button>
+                <Button variant="contained">niño</Button>
+            </Box>
+            <Box>
+                <Button
+                    variant="contained"
+                    onClick={() => navigate("/ListaDeInvitados", { state: { registros } })
+                    }>
+                    Siguiente
+                </Button>
+            </Box>
+        </Box>
+    );
 }

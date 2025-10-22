@@ -11,14 +11,14 @@ import { useNavigate } from 'react-router-dom';
 
 export default function App() {
 
+    
+    const navigate = useNavigate();
     const [Usuario, setUsuario] = useState('');
     const [password, setPassword] = useState('');
     const [registros, setRegistros] = useState([]);
     const [showPassword, setShowPassword] = useState(false);
 
-
     
-    const navigate = useNavigate();
     const handleClickShowPassword = () => setShowPassword(prev => !prev);
     const handleMouseShowPassword = (event) => {
         event.preventDefault();
@@ -30,14 +30,13 @@ export default function App() {
             return;
         }
 
-        setRegistros(prev => [...prev, { usuario: Usuario, password }]);
-        console.log("Usuarios registrados:", registros);
+        const nuevosRegistros = [...registros, { usuario: Usuario, password }];
+        setRegistros(nuevosRegistros);
 
         setUsuario("");
         setPassword("");
 
-
-        navigate("/Registro");
+        navigate("/Registro", { state: { registros: nuevosRegistros } });
     };
 
     return (
