@@ -14,27 +14,21 @@ export default function App() {
     
     const navigate = useNavigate();
     const [Usuario, setUsuario] = useState('');
-    const [password, setPassword] = useState('');
+    const [Apellido, setApellido] = useState('');
     const [registros, setRegistros] = useState([]);
-    const [showPassword, setShowPassword] = useState(false);
 
-    
-    const handleClickShowPassword = () => setShowPassword(prev => !prev);
-    const handleMouseShowPassword = (event) => {
-        event.preventDefault();
-    };
 
     const handleRegistro = () => {
-        if (!Usuario.trim() || !password.trim()) {
+        if (!Usuario.trim() || !Apellido.trim()) {
             alert('Por favor completa el registro');
             return;
         }
 
-        const nuevosRegistros = [...registros, { usuario: Usuario, password }];
+        const nuevosRegistros = [...registros, { usuario: Usuario, Apellido }];
         setRegistros(nuevosRegistros);
 
         setUsuario("");
-        setPassword("");
+        setApellido("");
 
         navigate("/Registro", { state: { registros: nuevosRegistros } });
     };
@@ -76,33 +70,22 @@ export default function App() {
                         inputProps={{ name: 'usuario' }}
                     />
                 </Box>
+                
+                <Box sx={{ width: 200 }}>
 
-                <Box sx={{
-                    width: '100%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center'
-                }}>
-                    <FormControl size="small" sx={{ m: 1, width: '67%' }} variant="filled">
-                        <InputLabel htmlFor="filled-adornment-password">Contraseña</InputLabel>
-                        <FilledInput
-                            id="filled-adornment-password"
-                            type={showPassword ? 'text' : 'password'}
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            inputProps={{ name: 'password' }}
-                            endAdornment={
-                                <InputAdornment position="end">
-                                    <IconButton onClick={handleClickShowPassword}
-                                        onMouseDown={handleMouseShowPassword}
-                                        edge="end">
-                                        {showPassword ? <VisibilityOff /> : <Visibility />}
-                                    </IconButton>
-                                </InputAdornment>
-                            }
-                        />
-                    </FormControl>
+                    <TextField
+                        size="small"
+                        id="outlined-controlled"
+                        label="Apellido"
+                        value={Apellido}
+                        onChange={(e) => setApellido(e.target.value)}
+                        color='secondary'
+                        variant='outlined'
+                        sx={{ mb: 1, width: '90%' }}
+                        inputProps={{ name: 'Apellido' }}
+                    />
                 </Box>
+
 
                 <Box>
                     <Button type='button' onClick={handleRegistro}>Registro</Button>
@@ -110,7 +93,7 @@ export default function App() {
 
                 <Box sx={{ mt: 2 }}>
                     {registros.map((reg, index) => (
-                        <Typography key={index}>{reg.usuario} - {reg.password}</Typography>
+                        <Typography key={index}>{reg.usuario} - {reg.Apellido}</Typography>
                     ))}
                 </Box>
             </Box>

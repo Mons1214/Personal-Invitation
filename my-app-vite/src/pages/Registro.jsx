@@ -29,16 +29,10 @@ export default function Registro() {
                 backgroundColor: "pink",
             }}>
 
-                <Button variant="contained ">niña</Button>
-                <Button variant="contained">niño</Button>
-            </Box>
-            <Box>
-                <Button
-                    variant="contained"
-                    onClick={() => navigate("/ListaDeInvitados", { state: { registros } })
-                    }>
-                    Siguiente
-                </Button>
+                <Button variant="contained"  color="secondary" onClick={() => navigate("/ListaDeInvitados", { state: { registros } })
+                    }>niña</Button>
+                <Button variant="contained" onClick={() => navigate("/ListaDeInvitados", { state: { registros } })
+                    }>niño</Button>
             </Box>
         </Box>
     );
