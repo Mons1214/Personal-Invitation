@@ -28,7 +28,6 @@ export default function Registro() {
                 gap: "2",
                 backgroundColor: "pink",
             }}>
-
                 <Button variant="contained"  color="secondary" onClick={() => navigate("/ListaDeInvitados", { state: { registros } })
                     }>niña</Button>
                 <Button variant="contained" onClick={() => navigate("/ListaDeInvitados", { state: { registros } })

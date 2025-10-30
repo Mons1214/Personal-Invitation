@@ -1,17 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Typography, TextField, Button } from '@mui/material';
-import FormControl from '@mui/material/FormControl';
-import InputLabel from '@mui/material/InputLabel';
-import InputAdornment from '@mui/material/InputAdornment';
-import IconButton from '@mui/material/IconButton';
-import FilledInput from '@mui/material/FilledInput';
-import { Visibility } from '@mui/icons-material';
-import { VisibilityOff } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 
 export default function App() {
 
-    
     const navigate = useNavigate();
     const [Usuario, setUsuario] = useState('');
     const [Apellido, setApellido] = useState('');
@@ -85,12 +77,9 @@ export default function App() {
                         inputProps={{ name: 'Apellido' }}
                     />
                 </Box>
-
-
                 <Box>
                     <Button type='button' onClick={handleRegistro}>Registro</Button>
                 </Box>
-
                 <Box sx={{ mt: 2 }}>
                     {registros.map((reg, index) => (
                         <Typography key={index}>{reg.usuario} - {reg.Apellido}</Typography>

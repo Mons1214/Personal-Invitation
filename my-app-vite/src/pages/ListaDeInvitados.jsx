@@ -25,7 +25,7 @@ export default function ListaDeInvitados() {
                     <Typography>Sin Registros</Typography>
                 ) : (
                     registros.map((reg, index) => (
-                        <Typography key={index}>{reg.usuario} - {reg.password}</Typography>
+                        <Typography key={index}>{reg.usuario} - {reg.Apellido}</Typography>
                     ))
                 )}
             </Box>
