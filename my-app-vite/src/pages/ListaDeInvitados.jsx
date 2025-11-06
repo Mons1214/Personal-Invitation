@@ -8,6 +8,10 @@ export default function ListaDeInvitados() {
     const registros = location.state?.registros || [];
 
 
+    //Contamos cuántos niños y niñas hay
+    const totalBoys = registros.filter((reg) => reg.eleccion === "niño").length;
+    const totalGirls = registros.filter((reg) => reg.eleccion === "niña").length;
+
     return (
         <Box sx={{
             display:"flex",
@@ -25,9 +29,17 @@ export default function ListaDeInvitados() {
                     <Typography>Sin Registros</Typography>
                 ) : (
                     registros.map((reg, index) => (
-                        <Typography key={index}>{reg.usuario} - {reg.Apellido}</Typography>
+                        <Typography key={index}>
+                            {reg.usuario} - {reg.Apellido} - {reg.eleccion}
+                            </Typography>
                     ))
                 )}
+            </Box>
+
+            {/*Mostramos contadores */}
+            <Box sx={{ mt: 2 }}>
+                <Typography>Girls: {totalGirls}</Typography>
+                <Typography>Boys: {totalBoys}</Typography>
             </Box>
             <Button variant="contained" color="secondary" onClick={() => navigate("/")}
             >

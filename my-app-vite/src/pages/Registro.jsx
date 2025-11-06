@@ -8,6 +8,19 @@ export default function Registro() {
 
     const registros = location.state?.registros || [];
 
+    const hadleSeleccion = (eleccion) => {
+        //aquí se agrega la eleccion
+        const nuevosRegistros = [...registros];
+        const ultimo = nuevosRegistros[nuevosRegistros.length - 1];
+
+        if (ultimo) {
+            ultimo.eleccion = eleccion; //"niño" o "niña"
+        }
+
+        //Aquí navegamos a la tercera página ya con el registro
+        navigate("/ListaDeInvitados", {state: { registros: nuevosRegistros } });
+    };
+
     return (
         <Box sx={{
             display: "flex",
@@ -28,10 +41,12 @@ export default function Registro() {
                 gap: "2",
                 backgroundColor: "pink",
             }}>
-                <Button variant="contained"  color="secondary" onClick={() => navigate("/ListaDeInvitados", { state: { registros } })
-                    }>niña</Button>
-                <Button variant="contained" onClick={() => navigate("/ListaDeInvitados", { state: { registros } })
-                    }>niño</Button>
+                <Button variant="contained"  color="secondary" onClick={() => hadleSeleccion("niña")}>
+                    niña
+                    </Button>
+                <Button variant="contained" onClick={() => hadleSeleccion("niño")}>
+                    niño
+                    </Button>
             </Box>
         </Box>
     );
