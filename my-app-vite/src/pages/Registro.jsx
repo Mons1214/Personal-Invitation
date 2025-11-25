@@ -27,9 +27,12 @@ export default function Registro() {
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
-            height: "95vh",
-            width: "350px",
-            gap: "2",
+            height: "87vh",
+            width: "85vw",
+            backgroundImage: "url('public/fondo/revelacion.jpg')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
         }}>
             <Box sx={{
                 border: "1px solid",

@@ -27,15 +27,20 @@ export default function App() {
 
     return (
         <Box className="App" sx={{
-            width: '100%',
-            height: '82vh',
             border: '3px solid',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
+            height: "90vh",
+            width: "95vw",
+            borderRadius: '30px',
+            backgroundImage: "url('public/fondo/poohcita.png')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
         }}>
             <Box className="Card" sx={{
-                border: '3px solid',
+                borderRadius: '20px',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',

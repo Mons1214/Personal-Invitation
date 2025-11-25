@@ -18,9 +18,12 @@ export default function ListaDeInvitados() {
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
-            height: "95vh",
-            width: "350px",
-            gap: "2",
+            height: "90vh",
+            width: "90vw",
+            backgroundImage: "url('public/fondo/azul.jpg')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
         }}>
             <Typography variant="h4">INVITADOS</Typography>
 
@@ -41,7 +44,7 @@ export default function ListaDeInvitados() {
                 <Typography>Girls: {totalGirls}</Typography>
                 <Typography>Boys: {totalBoys}</Typography>
             </Box>
-            <Button variant="contained" color="secondary" onClick={() => navigate("/")}
+            <Button variant="contained" color="" onClick={() => navigate("/")}
             >
                 Inicio
             </Button>
