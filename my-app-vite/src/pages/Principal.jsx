@@ -2,12 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Box, Typography, TextField, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
-export default function App() {
+export default function App({registros, setRegistros}) {
 
     const navigate = useNavigate();
     const [Usuario, setUsuario] = useState('');
     const [Apellido, setApellido] = useState('');
-    const [registros, setRegistros] = useState([]);
 
 
     const handleRegistro = () => {
@@ -15,8 +14,8 @@ export default function App() {
             alert('Por favor completa el registro');
             return;
         }
-
-        const nuevosRegistros = [...registros, { usuario: Usuario, Apellido }];
+        
+        const nuevosRegistros = [...registros, { usuario: Usuario, Apellido: Apellido }];
         setRegistros(nuevosRegistros);
 
         setUsuario("");
@@ -84,11 +83,6 @@ export default function App() {
                 </Box>
                 <Box>
                     <Button type='button' onClick={handleRegistro}>Registro</Button>
-                </Box>
-                <Box sx={{ mt: 2 }}>
-                    {registros.map((reg, index) => (
-                        <Typography key={index}>{reg.usuario} - {reg.Apellido}</Typography>
-                    ))}
                 </Box>
             </Box>
         </Box>

@@ -1,21 +1,23 @@
 import { Box, Button } from "@mui/material";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
-export default function Registro() {
+export default function Registro({registros, setRegistros}
+) {
     const navigate = useNavigate();
-    const location = useLocation();
-
-    const registros = location.state?.registros || [];
 
     const hadleSeleccion = (eleccion) => {
         //aquí se agrega la eleccion
         const nuevosRegistros = [...registros];
         const ultimo = nuevosRegistros[nuevosRegistros.length - 1];
 
+        console.log(ultimo);
+
         if (ultimo) {
-            ultimo.eleccion = eleccion; //"niño" o "niña"
+            ultimo.eleccion = eleccion;
         }
+        console.log(ultimo);
+        setRegistros(nuevosRegistros);
 
         //Aquí navegamos a la tercera página ya con el registro
         navigate("/ListaDeInvitados", {state: { registros: nuevosRegistros } });
