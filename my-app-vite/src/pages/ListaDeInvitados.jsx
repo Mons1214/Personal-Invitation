@@ -13,67 +13,84 @@ export default function ListaDeInvitados() {
     const totalGirls = registros.filter((reg) => reg.eleccion === "niña").length;
 
     return (
-        <Box sx={{
-            display:"flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
+        <Box className="App" sx={{
+            border: '3px solid',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
             height: "90vh",
-            width: "90vw",
+            width: "95vw",
+            borderRadius: '30px',
             backgroundImage: "url('public/fondo/azul.jpg')",
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
         }}>
-            <Typography variant="h4">INVITADOS</Typography>
+            <Box className="Card" sx={{
+                borderRadius: '20px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                flexDirection: 'column',
+                backgroundColor: 'mediumpurple',
+                padding: 3,
+                gap: 2,
+                maxHeight: '80vh',
+                overflowY: 'auto',
+            }}>
+                <Typography variant="h4">INVITADOS</Typography>
 
-            <TableContainer 
-                component={Paper} 
-                sx={{
-                    mt: 2,
-                    maxHeight: 300,
-                    width: 350,
-                    overflowY: 'auto',
-                    borderRadius: '2px',
-                 }}
-            >
-                <Table stickyHeader>
-                    <TableHead>
-                        <TableRow>
-                            <TableCell><strong>Nombre</strong></TableCell>
-                            <TableCell><strong>Apellido</strong></TableCell>
-                            <TableCell><strong>Elección</strong></TableCell>
-                        </TableRow>
-                    </TableHead>
-
-                    <TableBody>
-                        {registros.length === 0 ? (
-                            <TableRow>
-                                <TableCell colSpan={3} align="center">Sin registros</TableCell>
+                <TableContainer 
+                    component={Paper} 
+                    sx={{
+                        maxHeight: 300,
+                        width: 350,
+                        overflowY: 'auto',
+                        borderRadius: '10px',
+                        backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                     }}
+                >
+                    <Table stickyHeader>
+                        <TableHead>
+                            <TableRow sx={{ backgroundColor: '#f5f5f5' }}>
+                                <TableCell><strong>Nombre</strong></TableCell>
+                                <TableCell><strong>Apellido</strong></TableCell>
+                                <TableCell><strong>Elección</strong></TableCell>
                             </TableRow>
-                        ) : (
-                            registros.map((reg, index) => (
-                                <TableRow key={index}>
-                                    <TableCell>{reg.usuario}</TableCell>
-                                    <TableCell>{reg.Apellido}</TableCell>
-                                    <TableCell>{reg.eleccion}</TableCell>
+                        </TableHead>
+
+                        <TableBody>
+                            {registros.length === 0 ? (
+                                <TableRow>
+                                    <TableCell colSpan={3} align="center">Sin registros</TableCell>
                                 </TableRow>
-                            ))
-                        )}
-                    </TableBody>
-                </Table>
-            </TableContainer>
+                            ) : (
+                                registros.map((reg, index) => (
+                                    <TableRow key={index}>
+                                        <TableCell>{reg.usuario}</TableCell>
+                                        <TableCell>{reg.Apellido}</TableCell>
+                                        <TableCell>{reg.eleccion}</TableCell>
+                                    </TableRow>
+                                ))
+                            )}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
 
 
-            {/*Mostramos contadores */}
-            <Box sx={{ mt: 2 }}>
-                <Typography color="violet">Girls: {totalGirls}</Typography>
-                <Typography color="blue">Boys: {totalBoys}</Typography>
+                {/*Mostramos contadores */}
+                <Box sx={{ mt: 2, textAlign: 'center' }}>
+                    <Typography sx={{ color: 'white', fontWeight: 'bold' }}>Girls: {totalGirls}</Typography>
+                    <Typography sx={{ color: 'white', fontWeight: 'bold' }}>Boys: {totalBoys}</Typography>
+                </Box>
+                <Button 
+                    variant="contained" 
+                    onClick={() => navigate("/")}
+                    sx={{ backgroundColor: 'violet', color: 'white' }}
+                >
+                    Inicio
+                </Button>
             </Box>
-            <Button variant="contained" color="" onClick={() => navigate("/")}
-            >
-                Inicio
-            </Button>
         </Box>
     );
 }
